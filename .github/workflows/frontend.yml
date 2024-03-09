@@ -7,12 +7,19 @@ on:
   pull_request:
     branches:
       - main
+    types:
+      - labeled
+      - opened
+      - edited
+      - reopened
+      - synchronize
 
 env:
   CI: true
 
 jobs:
   test:
+    if: contains(github.event.pull_request.labels.*.name, 'frontend')
     name: test
     runs-on: ubuntu-latest
     defaults:
