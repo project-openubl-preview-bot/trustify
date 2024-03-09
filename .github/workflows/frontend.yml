@@ -13,7 +13,10 @@ on:
       - edited
       - reopened
       - synchronize
-
+  workflow_run:
+    workflows: ["pull request labeler"]
+    types:
+      - completed
 env:
   CI: true
 
