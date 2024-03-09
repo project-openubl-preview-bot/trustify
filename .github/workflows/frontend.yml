@@ -18,9 +18,9 @@ env:
   CI: true
 
 jobs:
-  test:
-    if: contains(github.event.pull_request.labels.*.name, 'frontend')
-    name: test
+  ci:
+    if: ${{ github.event_name == 'push' || github.event. contains(github.event.pull_request.labels.*.name, 'frontend') }}
+    name: ci
     runs-on: ubuntu-latest
     defaults:
       run:
