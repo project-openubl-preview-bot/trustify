@@ -20,7 +20,8 @@ env:
 jobs:
   test:
 #    if: github.event.label.name == 'frontend'
-    if: ${{ contains(github.event.*.labels.frontend.name, 'frontend') }}
+#    if: ${{ contains(github.event.*.labels.frontend.name, 'frontend') }}
+    if: contains(github.event.pull_request.labels.*.name, 'frontend')
     name: test
     runs-on: ubuntu-latest
     defaults:
