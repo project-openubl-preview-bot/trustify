@@ -7,22 +7,15 @@ on:
   pull_request:
     branches:
       - main
-    types:
-      - labeled
-      - opened
-      - edited
-      - reopened
-      - synchronize
-  workflow_run:
-    workflows: ["pull request labeler"]
-    types:
-      - completed
+    paths:
+      - "frontend/**"
+      - ".github/workflows/**"
+
 env:
   CI: true
 
 jobs:
   ci:
-    if: ${{ github.event_name == 'push' || contains(github.event.pull_request.labels.*.name, 'frontend') }}
     name: ci
     runs-on: ubuntu-latest
     defaults:
