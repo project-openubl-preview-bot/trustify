@@ -19,7 +19,8 @@ env:
 
 jobs:
   test:
-    if: github.event.label.name == 'frontend'
+#    if: github.event.label.name == 'frontend'
+    if: ${{ contains(github.event.*.labels.frontend.name, 'frontend') }}
     name: test
     runs-on: ubuntu-latest
     defaults:
